@@ -15,9 +15,21 @@
             />
 
         <ShellContent 
-            Title="ViewPage"
-            ContentTemplate="{DataTemplate local:}"
-            Route="ViewModel/NewPage1"
+            Title="Add a Book"
+            ContentTemplate="{DataTemplate local:AddFlashCard}"
+            Route="AddFlashCard"
+            />
+
+        <ShellContent 
+            Title="Modify a Book"
+            ContentTemplate="{DataTemplate local:ModifyFlashCard}"
+            Route="ModifyFlashCard"
+            />
+
+        <ShellContent 
+            Title="Delte a Book"
+            ContentTemplate="{DataTemplate local:DeleteFlashcard}"
+            Route="DeleteFlashcard"
             />
     </Tab>
 
