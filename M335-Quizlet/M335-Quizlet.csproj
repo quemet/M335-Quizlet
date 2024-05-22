@@ -21,10 +21,10 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>M335_Quizlet</ApplicationTitle>
+		<ApplicationTitle>M335-Quizlet</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.m335_quizlet</ApplicationId>
+		<ApplicationId>com.companyname.m335quizlet</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -58,22 +58,20 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.4" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="8.0.4" />
+		<PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.5" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="AddQuiz.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="DeleteQuiz.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="ModifyQuiz.xaml">
+	  <MauiXaml Update="ShowQuestion.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
