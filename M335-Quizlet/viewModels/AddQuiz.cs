@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using M335_Quizlet.Models;
 using M335_Quizlet.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
@@ -33,6 +34,8 @@ namespace M335_Quizlet.viewModels
             }
 
             Quizzes.Add(quiz);
+
+            RefreshWishesFromDB();
         }
 
         private void RefreshWishesFromDB(Database? database = null)
@@ -81,5 +84,28 @@ namespace M335_Quizlet.viewModels
                 RefreshWishesFromDB(db);
             }
         }
+
+        [RelayCommand]
+        private static async Task ChangePage(Quiz quiz)
+        {
+            JSP jsp = new();
+            jsp.Content = new Label { Text = "Hello" };
+            await jsp.ChangePage(quiz.Id);
+        }
+    }
+
+    public class JSP : ContentPage
+    {
+        public JSP()
+        {
+
+        }
+
+        public async Task ChangePage(int _id)
+        {
+            Content = new Label { Text = "OK" };
+            await Navigation.PushAsync(new ShowQuestion(_id));
+        }
+
     }
 }

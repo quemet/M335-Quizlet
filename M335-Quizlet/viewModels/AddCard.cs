@@ -14,7 +14,7 @@ namespace M335_Quizlet.viewModels
         private ObservableCollection<Question> questions = new();
 
         [ObservableProperty]
-        private int quiz_id = 1;
+        public static int quiz_id = ShowQuestion._id;
 
         public AddCard()
         {
@@ -25,7 +25,7 @@ namespace M335_Quizlet.viewModels
         {
             Questions.Clear();
 
-            if(db == null)
+            if (db == null)
             {
                 db = new Database();
             }
@@ -34,7 +34,7 @@ namespace M335_Quizlet.viewModels
 
             foreach (var que in allQuestions)
             {
-                Questions.Add(new Question { Answer = que.Answer, Response = que.Response, Quiz_Id = 1 });
+                Questions.Add(new Question { Answer = que.Answer, Response = que.Response, Quiz_Id = Quiz_id });
             }
         }
 
@@ -43,13 +43,14 @@ namespace M335_Quizlet.viewModels
         {
             string answer = await Shell.Current.DisplayPromptAsync(title: "Ajouter une question", message: "");
             string response = await Shell.Current.DisplayPromptAsync(title: "Ajouter une réponse", message: "");
-            var question = new Question { Answer = answer, Response = response, Quiz_Id = 1 };
+            var question = new Question { Answer = answer, Response = response, Quiz_Id = Quiz_id };
             using (var db = new Database())
             {
                 db.Questions.Add(question);
                 await db.SaveChangesAsync();
             }
             Questions.Add(question);
+            RefreshWishesFromDB();
         }
 
         [RelayCommand]

@@ -71,6 +71,9 @@
 	  <MauiXaml Update="AddQuiz.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="ShowOneCard.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="ShowQuestion.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

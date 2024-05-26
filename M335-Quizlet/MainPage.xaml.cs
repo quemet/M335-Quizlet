@@ -1,4 +1,6 @@
-﻿using M335_Quizlet.viewModels;
+﻿using M335_Quizlet.Models;
+using M335_Quizlet.viewModels;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace M335_Quizlet
 {
@@ -8,11 +10,5 @@ namespace M335_Quizlet
         {
             InitializeComponent();
         }
-
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new ShowQuestion());
-        }
     }
-
 }

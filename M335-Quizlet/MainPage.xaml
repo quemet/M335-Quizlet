@@ -24,7 +24,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Frame BackgroundColor="#BD8B9C" CornerRadius="90" WidthRequest="320" HeightRequest="140">
-                            <Button BackgroundColor="#BD8B9C" TextColor="White" Text="{Binding Title}" Clicked="Button_Clicked" FontSize="25" />
+                            <Button Command="{Binding ChangePageCommand}" CommandParameter="{Binding .}" BackgroundColor="#BD8B9C" TextColor="White" Text="{Binding Title}" FontSize="25" />
                         </Frame>
 
                         <ImageButton Source="Resources/Images/edit.png" WidthRequest="30" HeightRequest="30" Margin="180, 0, 0, 0" Command="{Binding Source={x:Reference vm}, Path=EditCommand}" CommandParameter="{Binding .}"/>
