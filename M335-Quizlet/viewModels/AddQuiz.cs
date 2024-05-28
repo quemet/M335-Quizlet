@@ -86,26 +86,9 @@ namespace M335_Quizlet.viewModels
         }
 
         [RelayCommand]
-        private static async Task ChangePage(Quiz quiz)
+        private async Task ChangePage(int id)
         {
-            JSP jsp = new();
-            jsp.Content = new Label { Text = "Hello" };
-            await jsp.ChangePage(quiz.Id);
+            FileStream file = File.Create(@"C:\file.txt");
         }
-    }
-
-    public class JSP : ContentPage
-    {
-        public JSP()
-        {
-
-        }
-
-        public async Task ChangePage(int _id)
-        {
-            Content = new Label { Text = "OK" };
-            await Navigation.PushAsync(new ShowQuestion(_id));
-        }
-
     }
 }

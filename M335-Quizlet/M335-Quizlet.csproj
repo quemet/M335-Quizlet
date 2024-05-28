@@ -79,4 +79,6 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionM335QuizletHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+
 </Project>
