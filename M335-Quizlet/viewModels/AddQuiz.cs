@@ -84,11 +84,5 @@ namespace M335_Quizlet.viewModels
                 RefreshWishesFromDB(db);
             }
         }
-
-        [RelayCommand]
-        private async Task ChangePage(int id)
-        {
-            FileStream file = File.Create(@"C:\file.txt");
-        }
     }
 }

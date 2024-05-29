@@ -21,12 +21,13 @@ public sealed partial class Game : ObservableObject
 	private int index = 0;
 
 	[ObservableProperty]
-	private int quiz_id = ShowQuestion._id;
+	private int id = ShowOneCard.ChangeId();
 
 	public Game()
 	{
 		MainLoop();
 		NextCard();
+		Index = 0;
 	}
 
     public void MelangerCartes<T>()
@@ -45,12 +46,11 @@ public sealed partial class Game : ObservableObject
 
     public void MainLoop()
 	{
-		int quiz_id = Quiz_id;
 		using(var db = new Database()) 
 		{
 			foreach(var question in db.Questions)
 			{
-				if(question.Quiz_Id == quiz_id)
+				if(question.Quiz_Id == Id)
 				{
 					Questions.Add(question);
 				}
@@ -61,17 +61,31 @@ public sealed partial class Game : ObservableObject
 	}
 
 	[RelayCommand]
-	public void NextCard()
+	private async Task NextCard()
 	{
 		try 
 		{
             Question question = Questions[Index];
             CardName = IsClicked ? question.Response : question.Answer;
-            IsClicked = !IsClicked;
             Index++;
+			IsClicked = false;
         } catch (Exception ex) 
 		{
-			// EndGame
+			throw new Exception(ex.ToString());
 		}
 	}
+
+	[RelayCommand]
+	private async Task ChangeName()
+	{
+		try
+		{
+			Question question = Questions[Index];
+            IsClicked = !IsClicked;
+            CardName = IsClicked ? question.Response : question.Answer;
+        } catch (Exception ex)
+		{
+			throw new Exception(ex.ToString());
+        }
+    }
 }

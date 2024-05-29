@@ -23,7 +23,7 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <Frame BackgroundColor="#5DA399" CornerRadius="90" WidthRequest="320" HeightRequest="80" >
+                        <Frame BackgroundColor="#5DA399" CornerRadius="90" WidthRequest="320" HeightRequest="80">
                             <Button BackgroundColor="#5DA399" TextColor="White" Text="{Binding Answer}" FontSize="15" />
                         </Frame>
 

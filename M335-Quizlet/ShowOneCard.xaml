@@ -11,7 +11,7 @@
 
     <VerticalStackLayout BackgroundColor="#9BBEC7">
 
-        <Label Text="{Binding CardName}" BackgroundColor="#BD8B9C" TextColor="White" WidthRequest="200" HeightRequest="400" />
+        <Button Text="{Binding CardName}" BackgroundColor="#BD8B9C" TextColor="White" WidthRequest="200" HeightRequest="400" Command="{Binding ChangeNameCommand}" />
 
         <Frame BackgroundColor="#BD8B9C" CornerRadius="90">
             <Button BackgroundColor="#BD8B9C" Command="{Binding NextCardCommand}" Text="Suivant" TextColor="White" />

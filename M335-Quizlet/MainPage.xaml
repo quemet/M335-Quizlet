@@ -10,6 +10,7 @@
     </ContentPage.BindingContext>
 
     <VerticalStackLayout BackgroundColor="Black">
+        <Label x:Name="vme" />
         <HorizontalStackLayout>
             <Button Text="+" HorizontalOptions="Center" Margin="250, 0, 10, 0" FontSize="Large" FontAttributes="Bold" BackgroundColor="Black" TextColor="White" Command="{Binding AddCommand}" />
             <Button Text="-" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" BackgroundColor="Black" TextColor="White" Command="{Binding DeleteCommand}"/>
@@ -24,10 +25,10 @@
                         </Grid.ColumnDefinitions>
 
                         <Frame BackgroundColor="#BD8B9C" CornerRadius="90" WidthRequest="320" HeightRequest="140">
-                            <Button Command="{Binding Source={x:Reference vm}, Path=ChangePageCommand}" CommandParameter="{Binding Id}" BackgroundColor="#BD8B9C" TextColor="White" Text="{Binding Title}" FontSize="25" />
+                            <Button Clicked="Button_Clicked" BackgroundColor="#BD8B9C" TextColor="White" Text="{Binding Title}" FontSize="25" ClassId="{Binding Id}" />
                         </Frame>
 
-                        <ImageButton Source="Resources/Images/edit.png" WidthRequest="30" HeightRequest="30" Margin="180, 0, 0, 0" Command="{Binding Source={x:Reference vm}, Path=EditCommand}" CommandParameter="{Binding .}"/>
+                        <ImageButton Source="Resources/Images/edit.png" WidthRequest="30" HeightRequest="30" Margin="180, 0, 0, 0" Command="{Binding Source={x:Reference vm}, Path=EditCommand}" CommandParameter="{Binding .}" />
 
                     </Grid>
 

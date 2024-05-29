@@ -14,7 +14,7 @@ namespace M335_Quizlet.viewModels
         private ObservableCollection<Question> questions = new();
 
         [ObservableProperty]
-        public static int quiz_id = ShowQuestion._id;
+        private int id = ShowQuestion.ChangeId();
 
         public AddCard()
         {
@@ -30,11 +30,11 @@ namespace M335_Quizlet.viewModels
                 db = new Database();
             }
 
-            var allQuestions = db.Questions.Where((dbQuestion) => dbQuestion.Quiz_Id == Quiz_id);
+            var allQuestions = db.Questions.Where((dbQuestion) => dbQuestion.Quiz_Id == Id);
 
             foreach (var que in allQuestions)
             {
-                Questions.Add(new Question { Answer = que.Answer, Response = que.Response, Quiz_Id = Quiz_id });
+                Questions.Add(new Question { Answer = que.Answer, Response = que.Response, Quiz_Id = Id });
             }
         }
 
@@ -43,7 +43,7 @@ namespace M335_Quizlet.viewModels
         {
             string answer = await Shell.Current.DisplayPromptAsync(title: "Ajouter une question", message: "");
             string response = await Shell.Current.DisplayPromptAsync(title: "Ajouter une réponse", message: "");
-            var question = new Question { Answer = answer, Response = response, Quiz_Id = Quiz_id };
+            var question = new Question { Answer = answer, Response = response, Quiz_Id = Id };
             using (var db = new Database())
             {
                 db.Questions.Add(question);
