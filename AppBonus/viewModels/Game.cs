@@ -9,7 +9,7 @@ namespace M335_Quizlet.viewModels;
 public sealed partial class Game : ObservableObject
 {
 	[ObservableProperty]
-	private ObservableCollection<Question> questions = new();
+	private ObservableCollection<Card> cards = new();
 
 	[ObservableProperty]
 	private string cardName = string.Empty;
@@ -20,27 +20,23 @@ public sealed partial class Game : ObservableObject
 	[ObservableProperty]
 	private int index = 0;
 
-	[ObservableProperty]
-	private int id = ShowOneCard.ChangeId();
-
 	public Game()
 	{
 		MainLoop();
 		NextCard();
-		Index = 0;
 	}
 
     public void MelangerCartes<T>()
     {
         Random rand = new Random();
-        int n = Questions.Count;
+        int n = Cards.Count;
         while (n > 1)
         {
             n--;
             int k = rand.Next(n + 1);
-            Question value = Questions[k];
-            Questions[k] = Questions[n];
-            Questions[n] = value;
+            Card value = Cards[k];
+            Cards[k] = Cards[n];
+            Cards[n] = value;
         }
     }
 
@@ -48,16 +44,13 @@ public sealed partial class Game : ObservableObject
 	{
 		using(var db = new Database()) 
 		{
-			foreach(var question in db.Questions)
+			foreach(var card in db.Cards)
 			{
-				if(question.Quiz_Id == Id)
-				{
-					Questions.Add(question);
-				}
+				Cards.Add(card);
 			}
 		}
 
-		MelangerCartes<Question>();
+		MelangerCartes<Card>();
 	}
 
 	[RelayCommand]
@@ -65,8 +58,8 @@ public sealed partial class Game : ObservableObject
 	{
 		try 
 		{
-            Question question = Questions[Index];
-            CardName = IsClicked ? question.Response : question.Answer;
+            Card question = Cards[Index];
+            CardName = IsClicked ? question.Response : question.Question;
             Index++;
 			IsClicked = false;
         } catch (Exception ex) 
@@ -80,9 +73,9 @@ public sealed partial class Game : ObservableObject
 	{
 		try
 		{
-			Question question = Questions[Index];
+			Card question = Cards[Index];
             IsClicked = !IsClicked;
-            CardName = IsClicked ? question.Response : question.Answer;
+            CardName = IsClicked ? question.Response : question.Question;
         } catch (Exception ex)
 		{
 			throw new Exception(ex.ToString());

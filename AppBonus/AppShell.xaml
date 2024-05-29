@@ -7,9 +7,11 @@
     Shell.FlyoutBehavior="Disabled"
     Title="M335_Quizlet">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <Tab Title="MainPage">
+        <ShellContent 
+            Title="MainPage"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage"
+            />
+    </Tab>
 </Shell>

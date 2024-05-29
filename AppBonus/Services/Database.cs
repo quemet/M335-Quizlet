@@ -5,8 +5,7 @@ namespace M335_Quizlet.Services
 {
     public class Database : DbContext
     {
-        public DbSet<Quiz> Quizzes { get; set; }
-        public DbSet<Question> Questions { get; set; }
+        public DbSet<Card> Cards { get; set; }
 
         public Database()
         {
