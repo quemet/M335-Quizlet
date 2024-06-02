@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="M335_Quizlet.Game"
+             xmlns:viewModels="clr-namespace:M335_Quizlet.viewModels"
+             Title="Game">
+
+    <ContentPage.BindingContext>
+        <viewModels:Game x:Name="vm" />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout BackgroundColor="#9BBEC7" x:Name="stack">
+        <Button WidthRequest="300" HeightRequest="400" Margin="0, 100, 0, 0" Text="{Binding CardName}" Command="{Binding NextCardCommand}"/>
+
+        <Button WidthRequest="200" HeightRequest="100" Text="Stopper" Command="{Binding EndGameCommand}" Margin="0, 0, 20, 0"/>
+    </VerticalStackLayout>
+</ContentPage>
